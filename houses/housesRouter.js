@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const Houses = require('./housesModel.js');
 
@@ -70,7 +71,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.post('/getvalue', (req, res) => {
+router.post('/getvalue', cors(), (req, res) => {
   axios
     .post('http://testing1-env.q5yaggzwbs.us-east-2.elasticbeanstalk.com/api', { address: req.body.address })
     // .post('http://valuate.us-east-1.elasticbeanstalk.com/', { address: req.body.address })
