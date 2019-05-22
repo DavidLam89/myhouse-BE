@@ -71,14 +71,10 @@ router.put('/:id', async (req, res) => {
 });
 
 router.post('/getvalue', (req, res) => {
-  const address = req.body.address;
-  return res.status(200).json(address);
   axios
-    // .post('http://testing1-env.q5yaggzwbs.us-east-2.elasticbeanstalk.com/api', { address: complete_address })
-    .post('http://valuator.us-east-1.elasticbeanstalk.com', { address })
+    .post('http://valuate.us-east-1.elasticbeanstalk.com/', { address: req.body.address })
     .then(data => {
-      // data.data.address = address;
-      res.status(200).json(data);
+      return res.status(200).json(data.data);
     })
     .catch(err => {
       return res.status(500).json({ err });
