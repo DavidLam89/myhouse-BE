@@ -7,6 +7,7 @@ const server = express();
 
 server.use(express.json());
 server.use(cors());
+server.options('*', cors());
 
 server.use('/api/users', usersRouter);
 server.use('/api/houses', housesRouter);
